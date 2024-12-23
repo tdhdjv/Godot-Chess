@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b78wvt04pb2od"]
+
+[ext_resource type="Texture2D" uid="uid://c81v73qe8um3x" path="res://pieces/white_pone.png" id="1_wc74j"]
+[ext_resource type="Script" path="res://pieces/pone/pone.gd" id="2_r0gy1"]
+
+[node name="Pone" type="Sprite2D"]
+texture = ExtResource("1_wc74j")
+script = ExtResource("2_r0gy1")

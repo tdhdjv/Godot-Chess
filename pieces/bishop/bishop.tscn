@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy4kju1014oia"]
+
+[ext_resource type="Script" path="res://pieces/bishop/bishop.gd" id="1_nku33"]
+[ext_resource type="Texture2D" uid="uid://dqwqpyu3uwxsv" path="res://pieces/bishop/white_bishop.png" id="1_rjff7"]
+[ext_resource type="Texture2D" uid="uid://b5ndiufox8r8a" path="res://pieces/bishop/black_bishop.png" id="3_jdqmj"]
+
+[node name="Bishop" type="Sprite2D"]
+texture = ExtResource("1_rjff7")
+script = ExtResource("1_nku33")
+black_image = ExtResource("3_jdqmj")

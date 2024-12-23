@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bibacfvoiubgr"]
+
+[ext_resource type="Texture2D" uid="uid://gr48wbrtal41" path="res://pieces/knight/black_knight.png" id="1_ohblr"]
+[ext_resource type="Texture2D" uid="uid://weetp4bksfl" path="res://pieces/knight/white_knight.png" id="2_j3yqc"]
+
+[node name="TextureButton" type="TextureButton"]
+custom_minimum_size = Vector2(240, 240)
+offset_left = -3.0
+offset_top = 166.0
+offset_right = 237.0
+offset_bottom = 406.0
+texture_normal = ExtResource("1_ohblr")
+texture_pressed = ExtResource("2_j3yqc")
+texture_hover = ExtResource("2_j3yqc")
+texture_focused = ExtResource("2_j3yqc")
+ignore_texture_size = true
+stretch_mode = 0

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ojaqfjlsc6ah"]
+
+[ext_resource type="Script" path="res://game_manager.gd" id="1_sj2w2"]
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("move_logs")]
+script = ExtResource("1_sj2w2")
+move_logs = NodePath("MoveLogs")
+
+[node name="MoveLogs" type="Node" parent="."]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr3hy2b2joxik"]
+
+[ext_resource type="Texture2D" uid="uid://bw4xdqlqgm3no" path="res://pieces/rook/white_rook.png" id="1_a4378"]
+[ext_resource type="Script" path="res://pieces/rook/rook.gd" id="1_ypjmm"]
+[ext_resource type="Texture2D" uid="uid://34x0gmbtxn6f" path="res://pieces/rook/black_rook.png" id="3_2rkn6"]
+
+[node name="Rook" type="Sprite2D"]
+texture = ExtResource("1_a4378")
+script = ExtResource("1_ypjmm")
+black_image = ExtResource("3_2rkn6")

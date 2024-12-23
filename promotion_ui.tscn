@@ -1,0 +1,153 @@
+[gd_scene load_steps=14 format=3 uid="uid://canrqucawr05a"]
+
+[ext_resource type="Script" path="res://promotion_ui.gd" id="1_7b31c"]
+[ext_resource type="Texture2D" uid="uid://weetp4bksfl" path="res://pieces/knight/white_knight.png" id="1_7yg41"]
+[ext_resource type="Texture2D" uid="uid://dqwqpyu3uwxsv" path="res://pieces/bishop/white_bishop.png" id="2_84sv1"]
+[ext_resource type="Texture2D" uid="uid://bw4xdqlqgm3no" path="res://pieces/rook/white_rook.png" id="3_fcqs1"]
+[ext_resource type="Texture2D" uid="uid://bb6scl533for4" path="res://pieces/queen/white_queen.png" id="4_wque1"]
+[ext_resource type="Texture2D" uid="uid://gr48wbrtal41" path="res://pieces/knight/black_knight.png" id="5_hhwng"]
+[ext_resource type="Texture2D" uid="uid://b5ndiufox8r8a" path="res://pieces/bishop/black_bishop.png" id="7_2wrrs"]
+[ext_resource type="Texture2D" uid="uid://34x0gmbtxn6f" path="res://pieces/rook/black_rook.png" id="8_edqup"]
+[ext_resource type="Texture2D" uid="uid://ce6w5n2bb05r0" path="res://pieces/queen/black_queen.png" id="9_ug56u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61vnb"]
+bg_color = Color(0.790283, 0.80521, 0.8125, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8c7y"]
+bg_color = Color(0.721909, 0.725333, 0.730469, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grx2w"]
+bg_color = Color(0.956863, 0.956863, 0.956863, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy8xq"]
+bg_color = Color(0.957031, 0.957031, 0.957031, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="PromotionUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+script = ExtResource("1_7b31c")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1002.0
+offset_bottom = 270.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_61vnb")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="BlackUI" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="QueenButton" type="Button" parent="PanelContainer/MarginContainer/BlackUI"]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8c7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grx2w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy8xq")
+icon = ExtResource("9_ug56u")
+expand_icon = true
+
+[node name="RookButton" type="Button" parent="PanelContainer/MarginContainer/BlackUI"]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8c7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grx2w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy8xq")
+icon = ExtResource("8_edqup")
+expand_icon = true
+
+[node name="BishopButton" type="Button" parent="PanelContainer/MarginContainer/BlackUI"]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8c7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grx2w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy8xq")
+icon = ExtResource("7_2wrrs")
+expand_icon = true
+
+[node name="KnightButton" type="Button" parent="PanelContainer/MarginContainer/BlackUI"]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8c7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grx2w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy8xq")
+icon = ExtResource("5_hhwng")
+expand_icon = true
+
+[node name="WhiteUI" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="QueenButton" type="Button" parent="PanelContainer/MarginContainer/WhiteUI"]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8c7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grx2w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy8xq")
+icon = ExtResource("4_wque1")
+expand_icon = true
+
+[node name="RookButton" type="Button" parent="PanelContainer/MarginContainer/WhiteUI"]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8c7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grx2w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy8xq")
+icon = ExtResource("3_fcqs1")
+expand_icon = true
+
+[node name="BishopButton" type="Button" parent="PanelContainer/MarginContainer/WhiteUI"]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8c7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grx2w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy8xq")
+icon = ExtResource("2_84sv1")
+expand_icon = true
+
+[node name="KnightButton" type="Button" parent="PanelContainer/MarginContainer/WhiteUI"]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8c7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grx2w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sy8xq")
+icon = ExtResource("1_7yg41")
+expand_icon = true
+
+[connection signal="button_down" from="PanelContainer/MarginContainer/BlackUI/QueenButton" to="." method="_on_queen_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/BlackUI/RookButton" to="." method="_on_rook_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/BlackUI/BishopButton" to="." method="_on_bishop_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/BlackUI/KnightButton" to="." method="_on_knight_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/WhiteUI/QueenButton" to="." method="_on_queen_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/WhiteUI/RookButton" to="." method="_on_rook_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/WhiteUI/BishopButton" to="." method="_on_bishop_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/WhiteUI/KnightButton" to="." method="_on_knight_button_button_down"]

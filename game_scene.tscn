@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnyhqer3heo5x"]
+
+[ext_resource type="PackedScene" uid="uid://7xjbnu3vfv62" path="res://board/board.tscn" id="1_eea7j"]
+[ext_resource type="PackedScene" uid="uid://ojaqfjlsc6ah" path="res://game_manager.tscn" id="2_ute7k"]
+[ext_resource type="PackedScene" uid="uid://dhjh5q8y1ppy6" path="res://timer_ui.tscn" id="3_82hoy"]
+
+[node name="GameScene" type="Node"]
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("board", "white_timer", "black_timer") instance=ExtResource("2_ute7k")]
+board = NodePath("CanvasLayer/MarginContainer/HBoxContainer/MainGame/AspectRatioContainer/Board")
+white_timer = NodePath("CanvasLayer/MarginContainer/HBoxContainer/MainGame/WhiteTimerUI")
+black_timer = NodePath("CanvasLayer/MarginContainer/HBoxContainer/MainGame/BlackTimerUI")
+fade_color = Color(0.211765, 0.2, 0.2, 0.486275)
+selected_color = Color(0.678431, 0.929412, 0.0627451, 0.423529)
+mouse_square_color = Color(1, 1, 1, 0.282353)
+legal_moves_color = Color(0.0862745, 0.592157, 0.0313726, 0.603922)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.194901, 0.202198, 0.207031, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="GameManager/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameManager/CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="MainGame" type="VBoxContainer" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BlackTimerUI" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer/MainGame" instance=ExtResource("3_82hoy")]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer/MainGame"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch_mode = 1
+alignment_horizontal = 0
+
+[node name="Board" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer/MainGame/AspectRatioContainer" instance=ExtResource("1_eea7j")]
+layout_mode = 2
+
+[node name="WhiteTimerUI" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer/MainGame" instance=ExtResource("3_82hoy")]
+layout_mode = 2
+
+[node name="GameLogs" type="VBoxContainer" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
