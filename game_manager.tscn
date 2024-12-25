@@ -1,9 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://ojaqfjlsc6ah"]
+[gd_scene load_steps=8 format=3 uid="uid://ojaqfjlsc6ah"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_sj2w2"]
+[ext_resource type="AudioStream" uid="uid://dk0uixo5v0cpp" path="res://audio/move-check.mp3" id="2_d6000"]
+[ext_resource type="AudioStream" uid="uid://o1jfaeacd72l" path="res://audio/illegal.mp3" id="3_urcjl"]
+[ext_resource type="AudioStream" uid="uid://boc7ln7abiu6y" path="res://audio/game-end.mp3" id="4_v8q5p"]
+[ext_resource type="AudioStream" uid="uid://cri3ufkfk4vfp" path="res://audio/game-start.mp3" id="5_blhex"]
+[ext_resource type="AudioStream" uid="uid://cnfeh0ousmxob" path="res://audio/move-self.mp3" id="6_pteai"]
+[ext_resource type="AudioStream" uid="uid://bv4om1mm708kh" path="res://audio/capture.mp3" id="7_brwv4"]
 
 [node name="GameManager" type="Node" node_paths=PackedStringArray("move_logs")]
 script = ExtResource("1_sj2w2")
 move_logs = NodePath("MoveLogs")
+check_audio = ExtResource("2_d6000")
+illegal_move_audio = ExtResource("3_urcjl")
+game_end_audio = ExtResource("4_v8q5p")
+game_start_audio = ExtResource("5_blhex")
+move_audio = ExtResource("6_pteai")
+capture_audio = ExtResource("7_brwv4")
 
 [node name="MoveLogs" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

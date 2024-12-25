@@ -20,4 +20,4 @@ func _process(delta: float) -> void:
 		time_left -= delta
 		var minutes = time_left / 60
 		var seconds = fmod(time_left, 60)
-		label.text = '%d:%d' % [minutes, seconds]
+		label.text = '%d:%02d' % [minutes, seconds]

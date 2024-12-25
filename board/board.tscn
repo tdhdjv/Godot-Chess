@@ -1,16 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://7xjbnu3vfv62"]
+[gd_scene load_steps=3 format=3 uid="uid://7xjbnu3vfv62"]
 
 [ext_resource type="Script" path="res://board/board.gd" id="1_gd2tq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ttju"]
+
 [node name="Board" type="Panel" node_paths=PackedStringArray("white_pieces", "black_pieces")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 6.0
-offset_bottom = 6.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ttju")
 script = ExtResource("1_gd2tq")
 white_color = Color(0.945313, 0.867421, 0.745911, 1)
 black_color = Color(0.445313, 0.282248, 0.151337, 1)

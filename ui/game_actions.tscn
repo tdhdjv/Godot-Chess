@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://bs5h2b7f6oh2f"]
+
+[ext_resource type="FontFile" uid="uid://be1vclvpwlq2r" path="res://fonts/Futura Extra Black font.ttf" id="1_rf074"]
+[ext_resource type="Script" path="res://ui/game_actions.gd" id="1_w451s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hxro"]
+bg_color = Color(0.133333, 0.129412, 0.129412, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fbev"]
+bg_color = Color(0.298657, 0.835938, 0.12735, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.107052, 0.609375, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhw55"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.101961, 0.580392, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh3mm"]
+bg_color = Color(0.196286, 0.738281, 0.0230713, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+shadow_color = Color(0.100429, 0.582031, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 10)
+
+[node name="GameActions" type="Panel" node_paths=PackedStringArray("game_over", "playing", "label")]
+custom_minimum_size = Vector2(0, 120)
+anchors_preset = -1
+anchor_right = 1.001
+offset_right = -0.1521
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7hxro")
+script = ExtResource("1_w451s")
+game_over = NodePath("HBoxContainer")
+playing = NodePath("Button")
+label = NodePath("Label")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222
+anchor_right = 0.777
+anchor_bottom = 1.0
+offset_left = 64.034
+offset_top = 96.0
+offset_right = -63.881
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_rf074")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_0fbev")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lhw55")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh3mm")
+text = "RESIGN"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13183
+anchor_right = 0.888118
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_rf074")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_0fbev")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lhw55")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh3mm")
+text = "NEW GAME"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_right = -1.0
+theme_override_fonts/font = ExtResource("1_rf074")
+theme_override_font_sizes/font_size = 50
+text = "White Turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="HBoxContainer/Button2" to="." method="_on_button_2_button_down"]

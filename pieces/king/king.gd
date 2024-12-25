@@ -28,7 +28,7 @@ func get_moves() -> Array[Move]:
 
 func get_castle_moves() -> Array[Move]:
 	var moves:Array[Move] = []
-	if has_moved:
+	if has_moved or board.is_check(is_white):
 		return moves
 	
 	#king side

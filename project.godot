@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="Chess"
+config/version="1.0.0"
 run/main_scene="res://game_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://pieces/knight/white_knight.png"
 
 [display]
 
-window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [importer_defaults]

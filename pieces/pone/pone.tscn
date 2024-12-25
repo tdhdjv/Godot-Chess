@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c81v73qe8um3x" path="res://pieces/pone/white_pone.png" id="1_wc74j"]
 [ext_resource type="Script" path="res://pieces/pone/pone.gd" id="2_r0gy1"]
 [ext_resource type="Texture2D" uid="uid://43phltr23mt2" path="res://pieces/pone/black_pone.png" id="3_wep0d"]
-[ext_resource type="PackedScene" uid="uid://canrqucawr05a" path="res://promotion_ui.tscn" id="4_0pc41"]
+[ext_resource type="PackedScene" uid="uid://canrqucawr05a" path="res://ui/promotion_ui/promotion_ui.tscn" id="4_0pc41"]
 
 [node name="Pone" type="Sprite2D" node_paths=PackedStringArray("promotion_ui")]
 texture = ExtResource("1_wc74j")

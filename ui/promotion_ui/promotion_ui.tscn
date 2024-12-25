@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://canrqucawr05a"]
 
-[ext_resource type="Script" path="res://promotion_ui.gd" id="1_7b31c"]
+[ext_resource type="Script" path="res://ui/promotion_ui/promotion_ui.gd" id="1_7b31c"]
 [ext_resource type="Texture2D" uid="uid://weetp4bksfl" path="res://pieces/knight/white_knight.png" id="1_7yg41"]
 [ext_resource type="Texture2D" uid="uid://dqwqpyu3uwxsv" path="res://pieces/bishop/white_bishop.png" id="2_84sv1"]
 [ext_resource type="Texture2D" uid="uid://bw4xdqlqgm3no" path="res://pieces/rook/white_rook.png" id="3_fcqs1"]
@@ -43,6 +43,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

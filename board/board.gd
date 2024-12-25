@@ -91,7 +91,10 @@ func _draw() -> void:
 			var pos = Vector2(i, j)*square_length
 			var rect = Rect2(pos, square_size)
 			draw_rect(rect, color)
+	snap_all_pieces()
 			
+	#change the sprite's size/position of all the pieces to match the board
+	
 	for highlight in highlighted_squares:
 		var color = highlighted_squares[highlight]
 		var pos = highlight*square_length
@@ -104,8 +107,7 @@ func _on_resized() -> void:
 	square_size = Vector2(1, 1)*square_length
 	
 	#change the sprite's size/position of all the pieces to match the board
-	for piece in pieces:
-		snap_piece_to_square(piece)
+	snap_all_pieces()
 	
 func board_to_world_pos(board_pos:Vector2i) -> Vector2:
 	var world_pos:Vector2 = (Vector2(board_pos)+Vector2(0.5, 0.5)) * square_length + global_position
@@ -124,6 +126,10 @@ func snap_piece_to_square(piece:Piece) -> void:
 	piece.scale = new_piece_scale
 	piece.global_position = new_piece_pos
 	
+func snap_all_pieces() -> void:
+	for piece in pieces:
+		snap_piece_to_square(piece)
+
 func ghost_move(move:Move) -> void:
 	#move the the piece
 	var previous_square = move.previous_square
@@ -156,8 +162,9 @@ func ghost_undo_move(move:Move) -> void:
 			white_pieces.add_child(captured_piece)
 		else:
 			black_pieces.add_child(captured_piece)
+		pieces.append(captured_piece)
 		board[captured_piece.board_pos.x][captured_piece.board_pos.y] = captured_piece
-	
+
 func move(move:Move) -> void:
 	#move the the piece
 	var previous_square = move.previous_square
@@ -227,6 +234,9 @@ func is_check_mate(is_white:bool):
 	
 	if not is_white:
 		players_pieces = black_pieces
+		
+	if not is_check(is_white):
+		return false
 		
 	for piece in players_pieces.get_children():
 		if piece.get_moves():

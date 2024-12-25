@@ -1,62 +1,98 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnyhqer3heo5x"]
+[gd_scene load_steps=8 format=3 uid="uid://bnyhqer3heo5x"]
 
 [ext_resource type="PackedScene" uid="uid://7xjbnu3vfv62" path="res://board/board.tscn" id="1_eea7j"]
+[ext_resource type="Script" path="res://playable_area.gd" id="1_hm7b3"]
 [ext_resource type="PackedScene" uid="uid://ojaqfjlsc6ah" path="res://game_manager.tscn" id="2_ute7k"]
-[ext_resource type="PackedScene" uid="uid://dhjh5q8y1ppy6" path="res://timer_ui.tscn" id="3_82hoy"]
+[ext_resource type="PackedScene" uid="uid://dhjh5q8y1ppy6" path="res://ui/timer_ui/timer_ui.tscn" id="3_82hoy"]
+[ext_resource type="Script" path="res://move_logs.gd" id="3_cr1p4"]
+[ext_resource type="PackedScene" uid="uid://bs5h2b7f6oh2f" path="res://ui/game_actions.tscn" id="4_q3tl4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08o11"]
+bg_color = Color(0.219608, 0.203922, 0.203922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="GameScene" type="Node"]
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("board", "white_timer", "black_timer") instance=ExtResource("2_ute7k")]
-board = NodePath("CanvasLayer/MarginContainer/HBoxContainer/MainGame/AspectRatioContainer/Board")
-white_timer = NodePath("CanvasLayer/MarginContainer/HBoxContainer/MainGame/WhiteTimerUI")
-black_timer = NodePath("CanvasLayer/MarginContainer/HBoxContainer/MainGame/BlackTimerUI")
-fade_color = Color(0.211765, 0.2, 0.2, 0.486275)
-selected_color = Color(0.678431, 0.929412, 0.0627451, 0.423529)
-mouse_square_color = Color(1, 1, 1, 0.282353)
-legal_moves_color = Color(0.0862745, 0.592157, 0.0313726, 0.603922)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
-
-[node name="ColorRect" type="ColorRect" parent="GameManager/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.00087
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.194901, 0.202198, 0.207031, 1)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="GameManager/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameManager/CanvasLayer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="MainGame" type="VBoxContainer" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer"]
+[node name="PlayableArea" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
+script = ExtResource("1_hm7b3")
 
-[node name="BlackTimerUI" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer/MainGame" instance=ExtResource("3_82hoy")]
+[node name="BlackTimer" parent="PanelContainer/MarginContainer/HBoxContainer/PlayableArea" instance=ExtResource("3_82hoy")]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer/MainGame"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PlayableArea"]
 layout_mode = 2
 size_flags_vertical = 3
 stretch_mode = 1
 alignment_horizontal = 0
 
-[node name="Board" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer/MainGame/AspectRatioContainer" instance=ExtResource("1_eea7j")]
+[node name="Board" parent="PanelContainer/MarginContainer/HBoxContainer/PlayableArea/AspectRatioContainer" instance=ExtResource("1_eea7j")]
 layout_mode = 2
 
-[node name="WhiteTimerUI" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer/MainGame" instance=ExtResource("3_82hoy")]
+[node name="WhiteTimer" parent="PanelContainer/MarginContainer/HBoxContainer/PlayableArea" instance=ExtResource("3_82hoy")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="GameData" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_08o11")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/GameData"]
 layout_mode = 2
 
-[node name="GameLogs" type="VBoxContainer" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/GameData/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+
+[node name="MoveLogs" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/GameData/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("3_cr1p4")
+
+[node name="GameAction" parent="PanelContainer/MarginContainer/HBoxContainer/GameData/VBoxContainer" instance=ExtResource("4_q3tl4")]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("board", "white_timer", "black_timer", "move_logs", "game_actions") instance=ExtResource("2_ute7k")]
+board = NodePath("../PanelContainer/MarginContainer/HBoxContainer/PlayableArea/AspectRatioContainer/Board")
+white_timer = NodePath("../PanelContainer/MarginContainer/HBoxContainer/PlayableArea/WhiteTimer")
+black_timer = NodePath("../PanelContainer/MarginContainer/HBoxContainer/PlayableArea/BlackTimer")
+move_logs = NodePath("../PanelContainer/MarginContainer/HBoxContainer/GameData/VBoxContainer/MarginContainer/MoveLogs")
+game_actions = NodePath("../PanelContainer/MarginContainer/HBoxContainer/GameData/VBoxContainer/GameAction")
+fade_color = Color(0.298039, 0.286275, 0.286275, 0.6)
+selected_color = Color(0.826488, 0.941406, 0.0220642, 0.592157)
+legal_moves_color = Color(0.188235, 0.745098, 0.0509804, 0.498039)

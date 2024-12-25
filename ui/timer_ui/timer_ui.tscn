@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhjh5q8y1ppy6"]
 
 [ext_resource type="FontFile" uid="uid://be1vclvpwlq2r" path="res://fonts/Futura Extra Black font.ttf" id="1_4y0i0"]
-[ext_resource type="Script" path="res://timer_ui.gd" id="1_hf5iw"]
+[ext_resource type="Script" path="res://ui/timer_ui/timer_ui.gd" id="1_hf5iw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kde52"]
 bg_color = Color(0.156433, 0.163551, 0.171875, 1)
@@ -28,9 +28,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 0
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
